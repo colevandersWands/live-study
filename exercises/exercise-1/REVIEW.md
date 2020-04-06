@@ -1,10 +1,8 @@
 # event-loop /
 
-> 4/6/2020, 6:13:45 PM 
+> 4/6/2020, 7:05:08 PM 
 
 ## /exercise-1 - syntaxError 
-
-* [../REVIEW.md](../REVIEW.md)
 
 ### files
 
@@ -16,6 +14,8 @@
 * [/b](./b/REVIEW.md) - no assertions
 * [/c](./c/REVIEW.md) - fail
 
+[../REVIEW.md](../REVIEW.md)
+
 ---
 
 ## toad - error
@@ -25,8 +25,8 @@
 ```txt
 - FAIL: 0 ms., toad, Test 4
 + PASS: 0 ms., toad, Test 5
-+ PASS (async): 12 ms., toad, Test 6
-- FAIL (async): 12 ms., toad, Test 7
++ PASS (async): 13 ms., toad, Test 6
+- FAIL (async): 13 ms., toad, Test 7
  (async)Error: water bucket
 ```
 

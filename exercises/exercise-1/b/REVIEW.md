@@ -1,14 +1,14 @@
 # event-loop /
 
-> 4/6/2020, 6:13:45 PM 
+> 4/6/2020, 7:05:08 PM 
 
 ## /b - no assertions 
-
-* [../REVIEW.md](../REVIEW.md)
 
 ### files
 
 * [/index.js](#index---no-assertions) - no assertions 
+
+[../REVIEW.md](../REVIEW.md)
 
 ---
 

@@ -1,14 +1,24 @@
 # event-loop /
 
-> 4/6/2020, 6:13:45 PM 
+> 4/6/2020, 7:05:08 PM 
 
 ## /exercise-2 - error 
 
-* [../REVIEW.md](../REVIEW.md)
-
 ### files
 
+* [/asdf.js](#asdf---no-assertions) - no assertions 
 * [/index.js](#index---error) - error 
+* [/qwer.js](#qwer---no-assertions) - no assertions 
+
+[../REVIEW.md](../REVIEW.md)
+
+---
+
+## asdf - no assertions
+
+* [review source](./asdf.js)
+
+[TOP](#event-loop)
 
 ---
 
@@ -73,6 +83,14 @@ console.assert(word === 'wo',
 // f
 
 ```
+
+[TOP](#event-loop)
+
+---
+
+## qwer - no assertions
+
+* [review source](./qwer.js)
 
 [TOP](#event-loop)
 

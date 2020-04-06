@@ -1,14 +1,14 @@
 # event-loop /
 
-> 4/6/2020, 6:13:45 PM 
+> 4/6/2020, 7:05:08 PM 
 
 ## /y - fail 
-
-* [../REVIEW.md](../REVIEW.md)
 
 ### files
 
 * [/index.js](#index---fail) - fail 
+
+[../REVIEW.md](../REVIEW.md)
 
 ---
 
@@ -18,9 +18,9 @@
 
 ```txt
 + PASS: exercise 1, 0 ms: Test 1
-- FAIL (async): exercise 1, 1002 ms: Test 3
-- FAIL (async): exercise 1, 2001 ms: Test 2
-- FAIL (async): exercise 1, 3001 ms: Test 1
+- FAIL (async): exercise 1, 1001 ms: Test 3
+- FAIL (async): exercise 1, 2003 ms: Test 2
+- FAIL (async): exercise 1, 3003 ms: Test 1
 ```
 
 ```js

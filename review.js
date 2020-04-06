@@ -353,9 +353,9 @@ const generateReviews = (virDir) => {
     : '';
 
 
-  const index = '* [../REVIEW.md](../REVIEW.md)\n\n'
-    + filesIndex
-    + subDirIndex;
+  const index = filesIndex
+    + subDirIndex
+    + '[../REVIEW.md](../REVIEW.md)\n\n';
 
   const fileSections = !virDir.report.files
     ? ''

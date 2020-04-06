@@ -1,10 +1,8 @@
 # event-loop /
 
-> 4/6/2020, 6:13:45 PM 
+> 4/6/2020, 7:05:08 PM 
 
 ## /exercises - syntaxError 
-
-* [../REVIEW.md](../REVIEW.md)
 
 ### files
 
@@ -14,6 +12,8 @@
 
 * [/exercise-1](./exercise-1/REVIEW.md) - syntaxError
 * [/exercise-2](./exercise-2/REVIEW.md) - error
+
+[../REVIEW.md](../REVIEW.md)
 
 ---
 
