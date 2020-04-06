@@ -1,0 +1,71 @@
+{
+  "path": "/exercises",
+  "files": [
+    "/limited-intervals.js"
+  ],
+  "dirs": [
+    {
+      "path": "/exercise-1",
+      "files": [
+        "/toad.js"
+      ],
+      "dirs": [
+        {
+          "path": "/a",
+          "files": [
+            "/index.js"
+          ],
+          "dirs": [
+            {
+              "path": "/m",
+              "files": [
+                "/toad.js"
+              ],
+              "dirs": [
+                {
+                  "path": "/x",
+                  "files": [
+                    "/index.js"
+                  ]
+                },
+                {
+                  "path": "/y",
+                  "files": [
+                    "/index.js"
+                  ]
+                },
+                {
+                  "path": "/z",
+                  "files": [
+                    "/index.js"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/b",
+          "files": [
+            "/index.js"
+          ]
+        },
+        {
+          "path": "/c",
+          "files": [
+            "/index.js"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/exercise-2",
+      "files": [
+        "/asdf.js",
+        "/index.js",
+        "/qwer.js"
+      ]
+    }
+  ],
+  "lastBuild": "2020-04-06T16:25:49.473Z"
+}
