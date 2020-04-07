@@ -1,7 +1,6 @@
 export default class LiveStudy {
   constructor(exercises, title) {
     this.exercises = exercises;
-    this.title = title;
   }
   async loadAll(dir) {
     dir = dir || this.exercises;
@@ -58,10 +57,6 @@ export default class LiveStudy {
   }
   render() {
     const container = document.createElement('div');
-
-    const header = document.createElement('h1');
-    header.innerHTML = this.title;
-    container.appendChild(header);
 
     const renderedExercises = this.renderExercises();
     const unWrapped = renderedExercises.lastChild;

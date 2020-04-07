@@ -7,18 +7,17 @@ const LOG_PATH = `./logs/${(new Date()).toJSON()}.txt`;
 const LOGS_LIMIT = 20;
 let cycles = 0;
 
-
-console.log('\n--- preparing ./logs ---\n');
 try {
   fs.accessSync('./logs');
   const logs = fs.readdirSync('./logs');
   if (logs.length > LOGS_LIMIT) {
-    console.log('\n--- clearing ' + logs.length - LOGS_LIMIT + ' old logs ---\n');
+    console.log('--- clearing ' + (logs.length - LOGS_LIMIT) + ' old logs ---');
     for (let i = 0; i < logs.length - LOGS_LIMIT; i++) {
       fs.unlinkSync('./logs/' + logs[i]);
     };
   };
 } catch (err) {
+  console.log('--- creating ./logs directory ---');
   fs.mkdirSync('./logs');
 };
 
