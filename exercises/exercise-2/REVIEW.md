@@ -2,19 +2,19 @@
 
 ## /exercise-2
 
-> error: 4/7/2020, 11:48:14 AM 
+> uncaught error: 4/7/2020, 12:28:50 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
-* [/asdf.js](#asdfjs) - no assertions
-* [/index.js](#indexjs) - error
-* [/qwer.js](#qwerjs) - no assertions
+* [/asdf.js](#asdfjs) - no reports
+* [/index.js](#indexjs) - uncaught error
+* [/qwer.js](#qwerjs) - no reports
 
 ---
 
 ## /asdf.js
 
-* no assertions
+* no reports
 * [review source](./asdf.js)
 
 [TOP](#event-loop)
@@ -23,7 +23,7 @@
 
 ## /index.js
 
-* error
+* uncaught error
 * [review source](./index.js)
 
 ```txt
@@ -90,7 +90,7 @@ console.assert(word === 'wo',
 
 ## /qwer.js
 
-* no assertions
+* no reports
 * [review source](./qwer.js)
 
 [TOP](#event-loop)

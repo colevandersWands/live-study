@@ -2,11 +2,11 @@
 
 ## /m
 
-> fail: 4/7/2020, 11:48:14 AM 
+> fail: 4/7/2020, 12:28:50 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
-* [/toad.js](#toadjs) - no assertions
+* [/toad.js](#toadjs) - no reports
 * [/x](./x/REVIEW.md) - fail
   * [/index.js](./x/REVIEW.md#indexjs) - fail
 * [/y](./y/REVIEW.md) - fail
@@ -18,7 +18,7 @@
 
 ## /toad.js
 
-* no assertions
+* no reports
 * [review source](./toad.js)
 
 [TOP](#event-loop)

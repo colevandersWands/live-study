@@ -2,17 +2,17 @@
 
 ## /b
 
-> no assertions: 4/7/2020, 11:48:14 AM 
+> no reports: 4/7/2020, 12:28:50 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
-* [/index.js](#indexjs) - no assertions
+* [/index.js](#indexjs) - no reports
 
 ---
 
 ## /index.js
 
-* no assertions
+* no reports
 * [review source](./index.js)
 
 ```js

@@ -1,6 +1,7 @@
 {
   "path": "/exercises",
   "files": [
+    "/catching-errors.js",
     "/limited-intervals.js"
   ],
   "dirs": [
@@ -67,5 +68,5 @@
       ]
     }
   ],
-  "lastBuild": "2020-04-06T16:25:49.473Z"
+  "lastBuild": "2020-04-07T10:28:50.130Z"
 }

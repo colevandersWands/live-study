@@ -11,6 +11,7 @@ console.log('\n--- loading ' + DIR + '/index.json ---\n');
 
 // INDEX will be modified by reference
 const INDEX = require(DIR + '/index.json');
+INDEX.unsortedLogs = [];
 
 console.log('\n--- generating empty reports ---\n');
 
@@ -118,7 +119,7 @@ const findMapKey = (err) => {
 const nativeConsoleAssert = console.assert;
 console.assert = function () {
   const args = Array.from(arguments);
-  // nativeConsoleAssert(...args);
+  nativeConsoleAssert(...args);
 
   const pseudoErr = {};
   Error.captureStackTrace(pseudoErr);
@@ -127,26 +128,43 @@ console.assert = function () {
   const async = pseudoErr.stack.includes('at Timeout.');
   const assertionReport = {
     async,
-    status: args[0] ? 1 : 2,
+    status: args[0] ? 2 : 3,
     assertion: args[0],
     messages: args.slice(1)
   };
-  reportMap[mapKey].logs.push(assertionReport);
+  try {
+    reportMap[mapKey].logs.push(assertionReport);
+  } catch (err) {
+    INDEX.unsortedLogs.push(assertionReport);
+  }
 };
 
+// capture caught errors, but don't include them in interpretation
 const nativeConsoleError = console.error;
-console.error = function () {
-  // what to do about this? not so important till promises
+console.error = function caughtError() {
   const args = Array.from(arguments);
-  // nativeConsoleError(...args);
+  nativeConsoleError(...args);
 
-  const pseudoErr = {};
-  Error.captureStackTrace(pseudoErr);
-  const mapKey = findMapKey(pseudoErr);
-  const errorReport = {
-    args
+  const caughtReport = {
+    caught: true,
+    status: 1,
+    messages: [...args]
   };
-  reportMap[mapKey].logs.push(errorReport);
+  let stacked;
+  if (args[0] instanceof Error || (args[0] && (typeof args[0].stack === 'string'))) {
+    stacked = args[0];
+    caughtReport.error = args[0].name + ': ' + args[0].message;
+  } else {
+    stacked = {};
+    Error.captureStackTrace(stacked);
+  };
+  caughtReport.stack = stacked.stack
+  const mapKey = findMapKey(stacked);
+  try {
+    reportMap[mapKey].logs.push(caughtReport);
+  } catch (err) {
+    INDEX.unsortedLogs.push(caughtReport);
+  }
 };
 
 const reportThrown = (thrown, async) => {
@@ -155,32 +173,41 @@ const reportThrown = (thrown, async) => {
   const thrownReport = { async };
   if (thrown instanceof Error) {
     if (thrown.stack.includes('SyntaxError:')) {
-      thrownReport.status = 5;
+      thrownReport.status = 6;
     } else {
-      thrownReport.status = 4;
+      thrownReport.status = 5;
     };
 
     thrownReport.error = thrown.name + ': ' + thrown.message;
     thrownReport.stack = thrown.stack.replace(__dirname, ' [ ... ] ');
     const mapKey = findMapKey(thrown);
     // console.log('---------', thrownReport.stack)
-    reportMap[mapKey].logs.push(thrownReport);
+    try {
+      reportMap[mapKey].logs.push(thrownReport);
+    } catch (err) {
+      INDEX.unsortedLogs.push(thrownReport);
+    }
     return;
   };
 
-
-  thrownReport.status = 3;
-  thrownReport.warning = thrown;
-  if (typeof thrown.stack === 'string') {
+  // configured to work with excessive iteration & interval warnings
+  thrownReport.status = 4;
+  thrownReport.warning = (thrown && thrown.warning)
+    ? thrown.warning
+    : thrown;
+  if (thrown && thrown.stack) {
     const pseudoErr = {};
     Error.captureStackTrace(pseudoErr);
     thrownReport.stack = pseudoErr.stack.replace(__dirname, ' [ ... ] ');
 
     const mapKey = findMapKey(pseudoErr);
-    reportMap[mapKey].logs.push(thrownReport);
+    try {
+      reportMap[mapKey].logs.push(thrownReport);
+    } catch (err) {
+      INDEX.unsortedLogs.push(thrownReport);
+    }
   } else {
-    if (!INDEX.untraceable) INDEX.untraceable = [];
-    INDEX.untraceable.push(thrownReport)
+    INDEX.unsortedLogs.push(thrownReport);
   };
 };
 
@@ -250,13 +277,14 @@ const summarizeReports = (virDir) => {
 
 const interpret = (value) =>
   value === -1 ? 'not evaluated'
-    : value === 0 ? 'no assertions'
-      : value === 1 ? 'pass'
-        : value === 2 ? 'fail'
-          : value === 3 ? 'warning'
-            : value === 4 ? 'error'
-              : value === 5 ? 'syntaxError'
-                : 'unknown status';
+    : value === 0 ? 'no reports'
+      : value === 1 ? 'caught error'
+        : value === 2 ? 'pass'
+          : value === 3 ? 'fail'
+            : value === 4 ? 'warning'
+              : value === 5 ? 'uncaught error'
+                : value === 6 ? 'syntaxError'
+                  : 'unknown status';
 
 
 const generateTableOfContents = (virDir, path, indent) => {

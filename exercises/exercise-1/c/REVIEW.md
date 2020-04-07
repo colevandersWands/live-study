@@ -2,7 +2,7 @@
 
 ## /c
 
-> fail: 4/7/2020, 11:48:14 AM 
+> fail: 4/7/2020, 12:28:50 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
@@ -18,8 +18,8 @@
 ```txt
 + PASS : exercise 1, 0 ms: Test 1
 - FAIL (async) : exercise 1, 1001 ms: Test 3
-- FAIL (async) : exercise 1, 2001 ms: Test 2
-- FAIL (async) : exercise 1, 3001 ms: Test 1
+- FAIL (async) : exercise 1, 2002 ms: Test 2
+- FAIL (async) : exercise 1, 3002 ms: Test 1
 ```
 
 ```js

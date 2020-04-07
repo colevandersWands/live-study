@@ -2,35 +2,58 @@
 
 ## /exercises
 
-> syntaxError: 4/7/2020, 11:48:14 AM 
+> syntaxError: 4/7/2020, 12:28:50 PM 
 
-* [/limited-intervals.js](#limited-intervalsjs) - error
+* [/catching-errors.js](#catching-errorsjs) - caught error
+* [/limited-intervals.js](#limited-intervalsjs) - uncaught error
 * [/exercise-1](./exercise-1/REVIEW.md) - syntaxError
-  * [/toad.js](./exercise-1/REVIEW.md#toadjs) - error
+  * [/toad.js](./exercise-1/REVIEW.md#toadjs) - uncaught error
   * [/a](./exercise-1/a/REVIEW.md) - syntaxError
     * [/index.js](./exercise-1/a/REVIEW.md#indexjs) - syntaxError
     * [/m](./exercise-1/a/m/REVIEW.md) - fail
-      * [/toad.js](./exercise-1/a/m/REVIEW.md#toadjs) - no assertions
+      * [/toad.js](./exercise-1/a/m/REVIEW.md#toadjs) - no reports
       * [/x](./exercise-1/a/m/x/REVIEW.md) - fail
         * [/index.js](./exercise-1/a/m/x/REVIEW.md#indexjs) - fail
       * [/y](./exercise-1/a/m/y/REVIEW.md) - fail
         * [/index.js](./exercise-1/a/m/y/REVIEW.md#indexjs) - fail
       * [/z](./exercise-1/a/m/z/REVIEW.md) - fail
         * [/index.js](./exercise-1/a/m/z/REVIEW.md#indexjs) - fail
-  * [/b](./exercise-1/b/REVIEW.md) - no assertions
-    * [/index.js](./exercise-1/b/REVIEW.md#indexjs) - no assertions
+  * [/b](./exercise-1/b/REVIEW.md) - no reports
+    * [/index.js](./exercise-1/b/REVIEW.md#indexjs) - no reports
   * [/c](./exercise-1/c/REVIEW.md) - fail
     * [/index.js](./exercise-1/c/REVIEW.md#indexjs) - fail
-* [/exercise-2](./exercise-2/REVIEW.md) - error
-  * [/asdf.js](./exercise-2/REVIEW.md#asdfjs) - no assertions
-  * [/index.js](./exercise-2/REVIEW.md#indexjs) - error
-  * [/qwer.js](./exercise-2/REVIEW.md#qwerjs) - no assertions
+* [/exercise-2](./exercise-2/REVIEW.md) - uncaught error
+  * [/asdf.js](./exercise-2/REVIEW.md#asdfjs) - no reports
+  * [/index.js](./exercise-2/REVIEW.md#indexjs) - uncaught error
+  * [/qwer.js](./exercise-2/REVIEW.md#qwerjs) - no reports
+
+---
+
+## /catching-errors.js
+
+* caught error
+* [review source](./catching-errors.js)
+
+```txt
+(caught) Error: caught!
+```
+
+```js
+try {
+  throw new Error('caught!');
+} catch (err) {
+  console.error(err);
+};
+
+```
+
+[TOP](#event-loop)
 
 ---
 
 ## /limited-intervals.js
 
-* error
+* uncaught error
 * [review source](./limited-intervals.js)
 
 ```txt
