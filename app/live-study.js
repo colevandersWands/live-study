@@ -27,9 +27,15 @@ export default class LiveStudy {
     const loadAllButton = document.createElement('button');
     loadAllButton.innerHTML = 'load exercises';
     loadAllButton.onclick = () => {
-      virDir.exercises.forEach(exercise => exercise.load());
-      loadAllButton.innerHTML = 'exercises are loaded';
-      loadAllButton.onclick = () => console.log('exercises are loaded');
+      virDir.exercises.forEach(exercise =>
+        exercise
+          .load()
+          .then(() => {
+            loadAllButton.innerHTML = 'exercises are loaded';
+            loadAllButton.onclick = () => console.log('exercises are loaded');
+          })
+          .catch(err => console.error(err))
+      );
     };
     summaryEl.appendChild(loadAllButton);
     detailsEl.appendChild(summaryEl);

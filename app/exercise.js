@@ -28,16 +28,12 @@ export default class Exercise {
     }
   }
 
-  async load(loadingMsg) {
+  load(loadingMsg) {
     // async/await so they log in the correct order
     if (loadingMsg) {
       console.log(loadingMsg);
     };
-    try {
-      await import('..' + this.path.abs);
-    } catch (err) {
-      console.error(err);
-    };
+    return import('..' + this.path.abs);
   }
 
   async get(studyType) {
