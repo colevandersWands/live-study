@@ -2,7 +2,7 @@
 
 ## /exercises
 
-> syntaxError: 4/7/2020, 12:28:50 PM 
+> syntaxError: 4/7/2020, 12:39:38 PM 
 
 * [/catching-errors.js](#catching-errorsjs) - caught error
 * [/limited-intervals.js](#limited-intervalsjs) - uncaught error
@@ -36,6 +36,20 @@
 
 ```txt
 (caught) Error: caught!
+    at Object.<anonymous> ( [ ... ] /exercises/catching-errors.js:2:9)
+    at Module._compile (internal/modules/cjs/loader.js:777:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at evaluate ( [ ... ] /review.js:226:7)
+    at Object.<anonymous> ( [ ... ] /review.js:233:1)
+    at Module._compile (internal/modules/cjs/loader.js:777:30)
+(caught) (async) Error: caught!
+    at Timeout.asyncErrorHandling [as _onTimeout] ( [ ... ] /exercises/catching-errors.js:9:11)
+    at listOnTimeout (internal/timers.js:531:17)
+    at processTimers (internal/timers.js:475:7)
 ```
 
 ```js
@@ -44,6 +58,14 @@ try {
 } catch (err) {
   console.error(err);
 };
+
+setTimeout(function asyncErrorHandling() {
+  try {
+    throw new Error('caught!');
+  } catch (err) {
+    console.error(err);
+  };
+}, 0);
 
 ```
 
@@ -58,6 +80,9 @@ try {
 
 ```txt
 (async) ReferenceError: intervalId is not defined
+    at Timeout._onTimeout ( [ ... ] /exercises/limited-intervals.js:22:17)
+    at listOnTimeout (internal/timers.js:531:17)
+    at processTimers (internal/timers.js:475:7)
 ```
 
 ```js

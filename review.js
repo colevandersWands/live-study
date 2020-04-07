@@ -5,6 +5,7 @@ const DIR = './exercises'
   + (process.argv[2]
     ? process.argv[2]
     : '');
+const DIRNAME_REPLACER = ' [ ... ] ';
 
 
 console.log('\n--- loading ' + DIR + '/index.json ---\n');
@@ -148,7 +149,7 @@ console.error = function caughtError() {
   const caughtReport = {
     caught: true,
     status: 1,
-    messages: [...args]
+    messages: [...args],
   };
   let stacked;
   if (args[0] instanceof Error || (args[0] && (typeof args[0].stack === 'string'))) {
@@ -158,7 +159,8 @@ console.error = function caughtError() {
     stacked = {};
     Error.captureStackTrace(stacked);
   };
-  caughtReport.stack = stacked.stack
+  caughtReport.stack = stacked.stack.split(__dirname).join(DIRNAME_REPLACER);
+  caughtReport.async = stacked.stack.includes('at Timeout.');
   const mapKey = findMapKey(stacked);
   try {
     reportMap[mapKey].logs.push(caughtReport);
@@ -179,7 +181,7 @@ const reportThrown = (thrown, async) => {
     };
 
     thrownReport.error = thrown.name + ': ' + thrown.message;
-    thrownReport.stack = thrown.stack.replace(__dirname, ' [ ... ] ');
+    thrownReport.stack = thrown.stack.split(__dirname).join(DIRNAME_REPLACER);
     const mapKey = findMapKey(thrown);
     // console.log('---------', thrownReport.stack)
     try {
@@ -198,7 +200,7 @@ const reportThrown = (thrown, async) => {
   if (thrown && thrown.stack) {
     const pseudoErr = {};
     Error.captureStackTrace(pseudoErr);
-    thrownReport.stack = pseudoErr.stack.replace(__dirname, ' [ ... ] ');
+    thrownReport.stack = pseudoErr.stack.split(__dirname).join(DIRNAME_REPLACER);
 
     const mapKey = findMapKey(pseudoErr);
     try {
@@ -337,7 +339,7 @@ const generateFileSectionMd = (fileReport) => {
       if (entry.hasOwnProperty('error')) {
         const isCaught = entry.caught
           ? '(caught) ' : '';
-        return `${isAsync}${isCaught}${entry.error}`;
+        return `${isCaught}${isAsync}${entry.stack}`;
       };
       if (entry.hasOwnProperty('warning')) {
         return `warning ${isAsync}: ` + entry.warning;

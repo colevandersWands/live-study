@@ -2,7 +2,7 @@
 
 ## /exercise-1
 
-> syntaxError: 4/7/2020, 12:28:50 PM 
+> syntaxError: 4/7/2020, 12:39:38 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
@@ -31,10 +31,13 @@
 
 ```txt
 - FAIL : 0 ms., toad, Test 4
-+ PASS : 3 ms., toad, Test 5
-+ PASS (async) : 17 ms., toad, Test 6
-- FAIL (async) : 18 ms., toad, Test 7
++ PASS : 2 ms., toad, Test 5
++ PASS (async) : 14 ms., toad, Test 6
+- FAIL (async) : 14 ms., toad, Test 7
 (async) Error: water bucket
+    at Timeout.beAnError [as _onTimeout] ( [ ... ] /exercises/exercise-1/toad.js:17:9)
+    at listOnTimeout (internal/timers.js:531:17)
+    at processTimers (internal/timers.js:475:7)
 ```
 
 ```js
