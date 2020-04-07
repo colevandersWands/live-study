@@ -1,35 +1,35 @@
-# event-loop /
+# event-loop 
 
-> 4/6/2020, 7:05:08 PM 
+## /exercise-2
 
-## /exercise-2 - error 
-
-### files
-
-* [/asdf.js](#asdf---no-assertions) - no assertions 
-* [/index.js](#index---error) - error 
-* [/qwer.js](#qwer---no-assertions) - no assertions 
+> error: 4/7/2020, 11:48:14 AM 
 
 [../REVIEW.md](../REVIEW.md)
 
+* [/asdf.js](#asdfjs) - no assertions
+* [/index.js](#indexjs) - error
+* [/qwer.js](#qwerjs) - no assertions
+
 ---
 
-## asdf - no assertions
+## /asdf.js
 
+* no assertions
 * [review source](./asdf.js)
 
 [TOP](#event-loop)
 
 ---
 
-## index - error
+## /index.js
 
+* error
 * [review source](./index.js)
 
 ```txt
 ReferenceError: er is not defined
- (async)ReferenceError: word is not defined
- (async)ReferenceError: word is not defined
+(async) ReferenceError: word is not defined
+(async) ReferenceError: word is not defined
 ```
 
 ```js
@@ -88,8 +88,9 @@ console.assert(word === 'wo',
 
 ---
 
-## qwer - no assertions
+## /qwer.js
 
+* no assertions
 * [review source](./qwer.js)
 
 [TOP](#event-loop)

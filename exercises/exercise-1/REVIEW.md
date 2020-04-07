@@ -1,33 +1,40 @@
-# event-loop /
+# event-loop 
 
-> 4/6/2020, 7:05:08 PM 
+## /exercise-1
 
-## /exercise-1 - syntaxError 
-
-### files
-
-* [/toad.js](#toad---error) - error 
-
-### sub-directories
-
-* [/a](./a/REVIEW.md) - syntaxError
-* [/b](./b/REVIEW.md) - no assertions
-* [/c](./c/REVIEW.md) - fail
+> syntaxError: 4/7/2020, 11:48:14 AM 
 
 [../REVIEW.md](../REVIEW.md)
 
+* [/toad.js](#toadjs) - error
+* [/a](./a/REVIEW.md) - syntaxError
+  * [/index.js](./a/REVIEW.md#indexjs) - syntaxError
+  * [/m](./a/m/REVIEW.md) - fail
+    * [/toad.js](./a/m/REVIEW.md#toadjs) - no assertions
+    * [/x](./a/m/x/REVIEW.md) - fail
+      * [/index.js](./a/m/x/REVIEW.md#indexjs) - fail
+    * [/y](./a/m/y/REVIEW.md) - fail
+      * [/index.js](./a/m/y/REVIEW.md#indexjs) - fail
+    * [/z](./a/m/z/REVIEW.md) - fail
+      * [/index.js](./a/m/z/REVIEW.md#indexjs) - fail
+* [/b](./b/REVIEW.md) - no assertions
+  * [/index.js](./b/REVIEW.md#indexjs) - no assertions
+* [/c](./c/REVIEW.md) - fail
+  * [/index.js](./c/REVIEW.md#indexjs) - fail
+
 ---
 
-## toad - error
+## /toad.js
 
+* error
 * [review source](./toad.js)
 
 ```txt
-- FAIL: 0 ms., toad, Test 4
-+ PASS: 0 ms., toad, Test 5
-+ PASS (async): 13 ms., toad, Test 6
-- FAIL (async): 13 ms., toad, Test 7
- (async)Error: water bucket
+- FAIL : 0 ms., toad, Test 4
++ PASS : 2 ms., toad, Test 5
++ PASS (async) : 16 ms., toad, Test 6
+- FAIL (async) : 16 ms., toad, Test 7
+(async) Error: water bucket
 ```
 
 ```js

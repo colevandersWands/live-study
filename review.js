@@ -259,33 +259,65 @@ const interpret = (value) =>
                 : 'unknown status';
 
 
+const generateTableOfContents = (virDir, path, indent) => {
+  indent = indent || '';
+  path = path || '';
+
+  const fileList = virDir.report.files
+    ? virDir.report.files
+      .map(fileReport => {
+        const anchor = fileReport.path
+          .split('.').join('')
+          .split('/').join('');
+        const reviewPath = path
+          ? '.' + path + '/REVIEW.md'
+          : '';
+        return `${indent}* [${fileReport.path}](${reviewPath}#${anchor}) - ${interpret(fileReport.status)}\n`;
+      })
+      .reduce((list, li) => list + li, '')
+    : '';
+
+
+  const dirList = virDir.dirs
+    ? virDir.dirs
+      .map(subDir => {
+        const subIndex = generateTableOfContents(subDir, path + subDir.path, indent + '  ');
+        const reviewPath = path + subDir.path + '/REVIEW.md';
+        return `${indent}* [${subDir.path}](.${reviewPath}) - ${interpret(subDir.report.status)}`
+          + (subIndex ? '\n' + subIndex : '');
+      })
+      .reduce((list, li) => list + li, '')
+    : '';
+
+
+  return fileList
+    + dirList;
+}
+
 const generateFileSectionMd = (fileReport) => {
 
   const divider = '---';
 
-  const headerText = fileReport.path
-    .split('.js').join('')
-    .split('/').join('');
-  const header = `## ${headerText} - ${interpret(fileReport.status)}`;
-
-  const sourceLink = `* [review source](.${fileReport.path})\n`;
+  const header = `## ${fileReport.path}`;
+  const status = `* ${interpret(fileReport.status)}`;
+  const sourceLink = `* [review source](.${fileReport.path})`;
 
   const renderedReport = fileReport.logs
     .map(entry => {
       const isAsync = entry.async
-        ? ' (async)' : '';
+        ? '(async) ' : '';
       if (entry.hasOwnProperty('error')) {
         const isCaught = entry.caught
           ? '(caught) ' : '';
         return `${isAsync}${isCaught}${entry.error}`;
       };
       if (entry.hasOwnProperty('warning')) {
-        return `warning${isAsync}: ` + entry.warning;
+        return `warning ${isAsync}: ` + entry.warning;
       };
       if (entry.hasOwnProperty('assertion')) {
         const assertion = Boolean(entry.assertion)
-          ? `+ PASS${isAsync}: `
-          : `- FAIL${isAsync}: `;
+          ? `+ PASS ${isAsync}: `
+          : `- FAIL ${isAsync}: `;
         const message = entry.messages
           .join(', ');
         return assertion + message;
@@ -306,56 +338,30 @@ const generateFileSectionMd = (fileReport) => {
 
   return divider + '\n\n'
     + header + '\n\n'
-    + sourceLink + '\n'
+    + status + '\n'
+    + sourceLink + '\n\n'
     + report
     + source
     + topLink + '\n';
 };
 
 
-
-const generateReviews = (virDir) => {
+const generateReviews = (virDir, isNested) => {
 
   if (virDir.dirs) {
     virDir.dirs
-      .forEach(subDir => generateReviews(subDir));
+      .forEach(subDir => generateReviews(subDir, true));
   }
 
-  const top = `# ${REPO_NAME} /\n\n`
-    + `> ${(new Date(INDEX.lastEvaluation)).toLocaleString()} \n\n`
-    + `## ${virDir.path} - ${interpret(virDir.report.status)} \n\n`;
-
-  const fileList = virDir.report.files
-    ? virDir.report.files
-      .map(fileReport => {
-        const headerText = fileReport.path
-          .split('.js').join('')
-          .split('/').join('');
-        return `* [${fileReport.path}](#${headerText}---${interpret(fileReport.status).split(' ').join('-')}) - ${interpret(fileReport.status)} `;
-      })
-      .reduce((list, li) => list + li + '\n', '')
-    : '';
-
-  const filesIndex = fileList
-    ? `### files\n\n` + fileList + '\n'
-    : '';
-
-  const dirList = virDir.dirs
-    ? virDir.dirs
-      .map(subDir => {
-        return `* [${subDir.path}](.${subDir.path}/REVIEW.md) - ${interpret(subDir.report.status)}`;
-      })
-      .reduce((list, li) => list + li + '\n', '')
-    : '';
-
-  const subDirIndex = dirList
-    ? `### sub-directories\n\n` + dirList + '\n'
-    : '';
+  const top = `# ${REPO_NAME} \n\n`
+    + `## ${virDir.path}\n\n`
+    + `> ${interpret(virDir.report.status)}: ${(new Date(INDEX.lastEvaluation)).toLocaleString()} \n\n`;
 
 
-  const index = filesIndex
-    + subDirIndex
-    + '[../REVIEW.md](../REVIEW.md)\n\n';
+  const tableOfContents = generateTableOfContents(virDir);
+
+  const index = (isNested ? '[../REVIEW.md](../REVIEW.md)\n\n' : '')
+    + tableOfContents;
 
   const fileSections = !virDir.report.files
     ? ''
@@ -364,7 +370,7 @@ const generateReviews = (virDir) => {
       .reduce((body, section) => body + section + '\n', '');
 
   const newREVIEW = top
-    + index
+    + index + '\n'
     + fileSections;
 
   virDir.review = newREVIEW;

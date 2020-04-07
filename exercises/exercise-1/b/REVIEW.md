@@ -1,19 +1,18 @@
-# event-loop /
+# event-loop 
 
-> 4/6/2020, 7:05:08 PM 
+## /b
 
-## /b - no assertions 
-
-### files
-
-* [/index.js](#index---no-assertions) - no assertions 
+> no assertions: 4/7/2020, 11:48:14 AM 
 
 [../REVIEW.md](../REVIEW.md)
 
+* [/index.js](#indexjs) - no assertions
+
 ---
 
-## index - no assertions
+## /index.js
 
+* no assertions
 * [review source](./index.js)
 
 ```js

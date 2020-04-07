@@ -63,38 +63,9 @@ export default class LiveStudy {
     header.innerHTML = this.title;
     container.appendChild(header);
 
-
-    const subListEl = document.createElement('ul');
-
-    // if (this.exercises.dirs) {
-    //   this.exercises.dirs.forEach(exerciseDir => {
-    //     const dirsList = this.renderExercises(exerciseDir);
-    //     const li = document.createElement('li');
-    //     li.appendChild(dirsList);
-    //     subListEl.appendChild(li);
-    //   });
-    // };
-
-    // if (this.exercises.exercises) {
-    //   this.exercises.exercises.forEach(exercise => {
-    //     const exerciseEl = exercise.render();
-    //     const li = document.createElement('li');
-    //     li.appendChild(exerciseEl);
-    //     subListEl.appendChild(li);
-    //   });
-    // };
-
     const renderedExercises = this.renderExercises();
     const unWrapped = renderedExercises.lastChild;
     container.appendChild(unWrapped);
-
-    // if (this.exercises.exercises) {
-    //   container.appendChild(document.createElement('br'));
-    //   container.appendChild(document.createElement('br'));
-    //   this.exercises.exercises.forEach(exercise => {
-    //     container.appendChild(exercise.render());
-    //   });
-    // };
 
     return container;
   }

@@ -1,28 +1,40 @@
-# event-loop /
+# event-loop 
 
-> 4/6/2020, 7:05:08 PM 
+## /exercises
 
-## /exercises - syntaxError 
+> syntaxError: 4/7/2020, 11:48:14 AM 
 
-### files
-
-* [/limited-intervals.js](#limited-intervals---error) - error 
-
-### sub-directories
-
+* [/limited-intervals.js](#limited-intervalsjs) - error
 * [/exercise-1](./exercise-1/REVIEW.md) - syntaxError
+  * [/toad.js](./exercise-1/REVIEW.md#toadjs) - error
+  * [/a](./exercise-1/a/REVIEW.md) - syntaxError
+    * [/index.js](./exercise-1/a/REVIEW.md#indexjs) - syntaxError
+    * [/m](./exercise-1/a/m/REVIEW.md) - fail
+      * [/toad.js](./exercise-1/a/m/REVIEW.md#toadjs) - no assertions
+      * [/x](./exercise-1/a/m/x/REVIEW.md) - fail
+        * [/index.js](./exercise-1/a/m/x/REVIEW.md#indexjs) - fail
+      * [/y](./exercise-1/a/m/y/REVIEW.md) - fail
+        * [/index.js](./exercise-1/a/m/y/REVIEW.md#indexjs) - fail
+      * [/z](./exercise-1/a/m/z/REVIEW.md) - fail
+        * [/index.js](./exercise-1/a/m/z/REVIEW.md#indexjs) - fail
+  * [/b](./exercise-1/b/REVIEW.md) - no assertions
+    * [/index.js](./exercise-1/b/REVIEW.md#indexjs) - no assertions
+  * [/c](./exercise-1/c/REVIEW.md) - fail
+    * [/index.js](./exercise-1/c/REVIEW.md#indexjs) - fail
 * [/exercise-2](./exercise-2/REVIEW.md) - error
-
-[../REVIEW.md](../REVIEW.md)
+  * [/asdf.js](./exercise-2/REVIEW.md#asdfjs) - no assertions
+  * [/index.js](./exercise-2/REVIEW.md#indexjs) - error
+  * [/qwer.js](./exercise-2/REVIEW.md#qwerjs) - no assertions
 
 ---
 
-## limited-intervals - error
+## /limited-intervals.js
 
+* error
 * [review source](./limited-intervals.js)
 
 ```txt
- (async)ReferenceError: intervalId is not defined
+(async) ReferenceError: intervalId is not defined
 ```
 
 ```js

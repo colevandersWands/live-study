@@ -1,26 +1,25 @@
-# event-loop /
+# event-loop 
 
-> 4/6/2020, 7:05:08 PM 
+## /x
 
-## /x - fail 
-
-### files
-
-* [/index.js](#index---fail) - fail 
+> fail: 4/7/2020, 11:48:14 AM 
 
 [../REVIEW.md](../REVIEW.md)
 
+* [/index.js](#indexjs) - fail
+
 ---
 
-## index - fail
+## /index.js
 
+* fail
 * [review source](./index.js)
 
 ```txt
-+ PASS: exercise 1, 0 ms: Test 1
-- FAIL (async): exercise 1, 1001 ms: Test 3
-- FAIL (async): exercise 1, 2006 ms: Test 2
-- FAIL (async): exercise 1, 3005 ms: Test 1
++ PASS : exercise 1, 1 ms: Test 1
+- FAIL (async) : exercise 1, 1001 ms: Test 3
+- FAIL (async) : exercise 1, 2001 ms: Test 2
+- FAIL (async) : exercise 1, 3005 ms: Test 1
 ```
 
 ```js
