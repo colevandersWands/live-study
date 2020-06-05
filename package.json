@@ -1,12 +1,12 @@
 {
-  "name": "event-loop",
+  "name": "live-study-template",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "node build.js",
-    "start": "npm run build && node server.js",
-    "review": "npm run build && node review.js"
+    "register": "node scripts/register.js",
+    "start": "npm run register && node server.js",
+    "review": "npm run register && node scripts/review.js"
   },
   "author": "",
   "license": "MIT"

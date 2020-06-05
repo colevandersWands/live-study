@@ -1,72 +1,146 @@
 {
   "path": "/exercises",
-  "files": [
-    "/catching-errors.js",
-    "/limited-intervals.js"
-  ],
   "dirs": [
     {
-      "path": "/exercise-1",
-      "files": [
-        "/toad.js"
-      ],
+      "path": "/1-variables",
       "dirs": [
         {
-          "path": "/a",
+          "path": "/examples",
           "files": [
-            "/index.js"
-          ],
-          "dirs": [
             {
-              "path": "/m",
-              "files": [
-                "/toad.js"
-              ],
-              "dirs": [
-                {
-                  "path": "/x",
-                  "files": [
-                    "/index.js"
-                  ]
-                },
-                {
-                  "path": "/y",
-                  "files": [
-                    "/index.js"
-                  ]
-                },
-                {
-                  "path": "/z",
-                  "files": [
-                    "/index.js"
-                  ]
-                }
-              ]
+              "path": "/const-vs-let.js"
+            },
+            {
+              "path": "/declaration-and-assignment.js"
+            },
+            {
+              "path": "/reassignment.js"
             }
-          ]
+          ],
+          "isExample": true
         },
         {
-          "path": "/b",
+          "path": "/exercises",
           "files": [
-            "/index.js"
-          ]
-        },
-        {
-          "path": "/c",
-          "files": [
-            "/index.js"
+            {
+              "path": "/1.js"
+            }
           ]
         }
       ]
     },
     {
-      "path": "/exercise-2",
-      "files": [
-        "/asdf.js",
-        "/index.js",
-        "/qwer.js"
+      "path": "/2-primitive-types",
+      "dirs": [
+        {
+          "path": "/examples",
+          "files": [
+            {
+              "path": "/boolean-undefined-null.js"
+            },
+            {
+              "path": "/number.js"
+            },
+            {
+              "path": "/string.js"
+            },
+            {
+              "path": "/typeof.js"
+            }
+          ],
+          "isExample": true
+        },
+        {
+          "path": "/exercises",
+          "files": [
+            {
+              "path": "/1.js"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/3-asserting-and-comparing",
+      "dirs": [
+        {
+          "path": "/examples",
+          "files": [
+            {
+              "path": "/assignment-vs-comparison.js"
+            },
+            {
+              "path": "/console-assert.js"
+            },
+            {
+              "path": "/strict-equality.js"
+            },
+            {
+              "path": "/strict-inequality.js"
+            },
+            {
+              "path": "/testing-with-assert.js"
+            }
+          ],
+          "isExample": true
+        },
+        {
+          "path": "/exercises",
+          "files": [
+            {
+              "path": "/1.js"
+            },
+            {
+              "path": "/2.js"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/4-functions",
+      "dirs": [
+        {
+          "path": "/examples",
+          "files": [
+            {
+              "path": "/declaration-vs-execution.js"
+            },
+            {
+              "path": "/parameters-and-arguments.js"
+            },
+            {
+              "path": "/return-values.js"
+            },
+            {
+              "path": "/scope.js"
+            },
+            {
+              "path": "/tracing-execution.js"
+            }
+          ],
+          "isExample": true
+        },
+        {
+          "path": "/exercises",
+          "files": [
+            {
+              "path": "/1.js"
+            },
+            {
+              "path": "/2.js"
+            },
+            {
+              "path": "/3.js"
+            },
+            {
+              "path": "/completed-example.js",
+              "isExample": true
+            }
+          ]
+        }
       ]
     }
   ],
-  "lastBuild": "2020-04-07T10:39:38.573Z"
+  "lastBuild": "2020-06-05T13:47:55.653Z"
 }

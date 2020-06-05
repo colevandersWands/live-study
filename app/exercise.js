@@ -1,30 +1,38 @@
 export default class Exercise {
 
-  static populate(data, path) {
-    path = path || data.path;
+  static populate(data, path, config) {
     if (data.files) {
       data.exercises = data.files
-        .map(relPath => new this(relPath, path));
+        .map(file => new this(file.path, path, config));
     };
     if (data.dirs) {
-      data.dirs.forEach(subDir => this.populate(subDir, path + subDir.path));
+      data.dirs.forEach(subDir => this.populate(subDir, path + subDir.path, config));
     };
     return data;
     // by side effect
   }
 
+  config = {
+    console: false,
+    debugger: true,
+    jsTutor: false,
+    loupe: false
+  };
   path = {
     rel: null,
     abs: null
   };
 
-  constructor(path, dirPath) {
+  constructor(path, dirPath, config) {
     if (typeof path !== 'string') {
       throw new TypeError('path must be a string');
     };
     this.path.rel = path;
     if (dirPath) {
       this.path.abs = dirPath + path;
+    }
+    if (config) {
+      Object.assign(this.config, config);
     }
   }
 
@@ -73,31 +81,65 @@ export default class Exercise {
     if (inDebugger) {
       console.log('\n--- in debugger: ' + this.path.rel + ' ----');
       const stepThrough = eval;
-      const debuggered = "debugger; // injected by inDebugger\n\n" + code;
+      const debuggered = "debugger;\n\n" + code;
       stepThrough(debuggered);
     } else {
       console.log('\n--- running: ' + this.path.rel + ' ----');
       eval(code);
     };
-    // PS. eval errors are uncaught to create VM links in the console
+  }
+
+  async inJsTutor() {
+    try {
+      const res = await fetch('.' + this.path.abs, {
+        headers: {
+          study: 'in Js Tutor'
+        }
+      });
+      if (res.status != 200) {
+        throw new Error(`${res.status}: ${res.statusText}`);
+      }
+      const code = await res.text();
+      const encodedJST = encodeURIComponent(code);
+      const sanitizedJST = encodedJST
+        .replace(/\(/g, '%28').replace(/\)/g, '%29')
+        .replace(/%09/g, '%20%20');
+      const jsTutorURL = "http://www.pythontutor.com/live.html#code=" + sanitizedJST + "&cumulative=false&curInstr=2&heapPrimitives=false&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false";
+      `http://www.pythontutor.com/live.html#code=function%20reverse%28str%29%20%7B%0A%20%20return%20str.split%28''%29.reverse%28%29.join%28''%29%3B%0A%7D%0A%0Aconst%20esrever%20%3D%20reverse%28%22reverse%22%29%3B%20%0Aconsole.assert%28esrever%20%3D%3D%3D%20%22esrever%22,%20%22fdsa%22%29%3B%20%0Aconsole.assert%28esrever%20%3D%3D%3D%20%22esrever%22,%20%22dsaf%22%29%3B%20%0Aconsole.error%28new%20Error%283%29%29%20%0Aconsole.log%28%7B%20e%3A%203,%20x%3A%20null,%20y%3A%20undefined,%20f%3A%20%5Bnull,%20undefined,%203%5D%20%7D%29%20%0Aconsole.log%282,%20%22%602%60%22,%20true%29%20%0Aconsole.log%28undefined,%20null%29%3B%20%0Aconsole.log%28reverse%29%3B%20%0Aconsole.log%28%5B1,%202,%203,%204,%205,%203,%206,%205,%204,%203%5D%29%20%0A4%3B&cumulative=false&curInstr=2&heapPrimitives=false&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false`;
+      console.log('\n--- in JS Tutor: ' + this.path.rel + ' ----');
+      window.open(jsTutorURL, '_blank');
+    } catch (err) {
+      console.error(err);
+    };
   }
 
   render() {
+    const container = document.createElement('span');
+
     const nameEl = document.createElement('text');
-    nameEl.innerHTML = this.path.rel + ' :';
-
-    const runCodeEl = document.createElement('button');
-    runCodeEl.innerHTML = 'run code';
-    runCodeEl.onclick = this.run.bind(this, false);
-
-    const inDebuggerEl = document.createElement('button');
-    inDebuggerEl.innerHTML = 'in debugger';
-    inDebuggerEl.onclick = this.run.bind(this, true);
-
-    const container = document.createElement('text');
+    nameEl.innerHTML = this.path.rel + ' : ';
     container.appendChild(nameEl);
-    container.appendChild(runCodeEl);
-    container.appendChild(inDebuggerEl);
+
+    if (this.config.console) {
+      const runCodeEl = document.createElement('button');
+      runCodeEl.innerHTML = 'console';
+      runCodeEl.onclick = this.run.bind(this, false);
+      container.appendChild(runCodeEl);
+      container.appendChild(document.createTextNode(''));
+    }
+    if (this.config.debugger) {
+      const inDebuggerEl = document.createElement('button');
+      inDebuggerEl.innerHTML = 'debugger';
+      inDebuggerEl.onclick = this.run.bind(this, true);
+      container.appendChild(inDebuggerEl);
+    }
+
+    if (this.config.jsTutor) {
+      const inJsTutorButton = document.createElement('button');
+      inJsTutorButton.innerHTML = 'JS Tutor';
+      inJsTutorButton.onclick = this.inJsTutor.bind(this);
+      container.appendChild(inJsTutorButton);
+    }
 
     return container;
   }

@@ -3,29 +3,30 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = process.env.PORT || 3000;
-const LOG_PATH = `./logs/${(new Date()).toJSON()}.txt`;
+const LOG_DIR = `./server-logs`;
+const LOG_NAME = `/${(new Date()).toJSON()}.txt`;
 const LOGS_LIMIT = 20;
 let cycles = 0;
 
 try {
-  fs.accessSync('./logs');
-  const logs = fs.readdirSync('./logs');
+  fs.accessSync(LOG_DIR);
+  const logs = fs.readdirSync(LOG_DIR);
   if (logs.length > LOGS_LIMIT) {
     console.log('--- clearing ' + (logs.length - LOGS_LIMIT) + ' old logs ---');
     for (let i = 0; i < logs.length - LOGS_LIMIT; i++) {
-      fs.unlinkSync('./logs/' + logs[i]);
+      fs.unlinkSync(LOG_DIR + '/' + logs[i]);
     };
   };
 } catch (err) {
-  console.log('--- creating ./logs directory ---');
-  fs.mkdirSync('./logs');
+  console.log(`--- creating ${LOG_DIR} directory ---`);
+  fs.mkdirSync(LOG_DIR);
 };
 
 const log = (msg) => {
   // more readable callstack, and to practice finding own files
   const cleanedMsg = msg.replace(__dirname, ' [ ... ] ');
   console.log(cleanedMsg);
-  fs.appendFileSync(LOG_PATH, cleanedMsg + '\n');
+  fs.appendFileSync(LOG_DIR + LOG_NAME, cleanedMsg + '\n');
 };
 
 const mime = {
@@ -45,9 +46,9 @@ const handleRequest = (req, res) => {
   const cycle = ++cycles;
 
   const studyMode = req.headers.study
-    ? '(' + req.headers.study + ')'
+    ? JSON.stringify({ study: req.headers.study })
     : '';
-  log(`${cycle}. request: ${req.method} ${req.url} ${studyMode}`);
+  log(`${cycle}. req: ${req.method} ${req.url} ${studyMode}`);
 
   let filePath = req.url === '/'
     ? './index.html'
@@ -75,7 +76,7 @@ const handleRequest = (req, res) => {
     } else {
       res.writeHead(200, { 'Content-Type': contentType });
       res.end(content, 'utf-8');
-      logMsg = 'response: ' + filePath;
+      logMsg = 'res: ' + filePath;
     };
     log(cycle + '. ' + logMsg);
   };
@@ -108,6 +109,3 @@ process.on('uncaughtException', function onUncaughtException(e) {
   log('- uncaughtException -\n' + e.stack);
   process.exit(99);
 });
-
-
-// modified from https://github.com/javascriptteacher/node/
