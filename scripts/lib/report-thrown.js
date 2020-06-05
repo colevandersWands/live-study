@@ -11,9 +11,12 @@ module.exports = (PARENT_DIR, reportMap) => {
     const thrownReport = { async, promise };
     if (thrown instanceof Error) {
       if (thrown.stack.includes('SyntaxError:')) {
-        thrownReport.status = 6;
+        thrownReport.status = 7;
       } else {
-        thrownReport.status = promise ? 4 : 5;
+        thrownReport.status =
+          promise ? 4
+            : async ? 5
+              : 6;
       };
 
       thrownReport.error = thrown.name + ': ' + thrown.message;
@@ -28,7 +31,9 @@ module.exports = (PARENT_DIR, reportMap) => {
 
     } else {
 
-      thrownReport.status = promise ? 4 : 5;
+      thrownReport.status = promise ? 4
+        : async ? 5
+          : 6;
       thrownReport.thrown = thrown;
 
       thrownReport.path = path;

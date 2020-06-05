@@ -2,21 +2,21 @@
 
 ## /exercises/4-functions/examples
 
-> 6/5/2020, 3:50:12 PM 
+> 6/5/2020, 4:25:51 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
-- [/declaration-vs-execution.js](#declaration-vs-executionjs) - no assertions
-- [/parameters-and-arguments.js](#parameters-and-argumentsjs) - no assertions
+- [/declaration-vs-execution.js](#declaration-vs-executionjs) 
+- [/parameters-and-arguments.js](#parameters-and-argumentsjs) 
 - [/return-values.js](#return-valuesjs) - pass
-- [/scope.js](#scopejs) - no assertions
+- [/scope.js](#scopejs) 
 - [/tracing-execution.js](#tracing-executionjs) - pass
 
 ---
 
 ## /declaration-vs-execution.js
 
-> no assertions
+> 
 >
 > [review source](./declaration-vs-execution.js)
 
@@ -53,7 +53,7 @@ iExist();
 
 ## /parameters-and-arguments.js
 
-> no assertions
+> 
 >
 > [review source](./parameters-and-arguments.js)
 
@@ -156,7 +156,7 @@ console.assert(isTrue5, 'Assertion 5');
 
 ## /scope.js
 
-> no assertions
+> 
 >
 > [review source](./scope.js)
 

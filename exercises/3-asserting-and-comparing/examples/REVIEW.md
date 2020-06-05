@@ -2,21 +2,21 @@
 
 ## /exercises/3-asserting-and-comparing/examples
 
-> 6/5/2020, 3:50:12 PM 
+> 6/5/2020, 4:25:51 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
-- [/assignment-vs-comparison.js](#assignment-vs-comparisonjs) - no assertions
+- [/assignment-vs-comparison.js](#assignment-vs-comparisonjs) 
 - [/console-assert.js](#console-assertjs) - fail
-- [/strict-equality.js](#strict-equalityjs) - no assertions
-- [/strict-inequality.js](#strict-inequalityjs) - no assertions
+- [/strict-equality.js](#strict-equalityjs) 
+- [/strict-inequality.js](#strict-inequalityjs) 
 - [/testing-with-assert.js](#testing-with-assertjs) - error
 
 ---
 
 ## /assignment-vs-comparison.js
 
-> no assertions
+> 
 >
 > [review source](./assignment-vs-comparison.js)
 
@@ -107,7 +107,7 @@ In the console, only failing asserts are printed.
 
 ## /strict-equality.js
 
-> no assertions
+> 
 >
 > [review source](./strict-equality.js)
 
@@ -173,7 +173,7 @@ console.log(typeof huh, huh);
 
 ## /strict-inequality.js
 
-> no assertions
+> 
 >
 > [review source](./strict-inequality.js)
 
@@ -258,7 +258,7 @@ UNCAUGHT : ReferenceError: _ is not defined
     at Module.require (internal/modules/cjs/loader.js:683:19)
     at require (internal/modules/cjs/helpers.js:16:16)
     at evaluate (  ...  /scripts/lib/evaluate.js:12:7)
-    at Object.<anonymous> (  ...  /scripts/review.js:70:1)
+    at Object.<anonymous> (  ...  /scripts/review.js:72:1)
     at Module._compile (internal/modules/cjs/loader.js:777:30)
 ```
 

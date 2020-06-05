@@ -52,6 +52,8 @@ process.on('exit', (exitCode) => {
     nativeConsole.log('\n--- generating REVIEW.md\'s ---\n');
     reviewify.generateReviews(index);
 
+    index.review += reviewify.renderUnsorted(index.unsortedLogs);
+
     nativeConsole.log('\n--- writing REVIEW.md\'s ---\n');
     reviewify.writeReviews(index, PARENT_DIR);
 

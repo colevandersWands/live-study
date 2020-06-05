@@ -4,6 +4,43 @@ const fs = require('fs');
 const interpret = require('./interpret');
 const toString = require('./to-string');
 
+const renderLogEntry = entry => {
+  if (entry.promise) {
+    return `REJECTED : ${entry.stack || entry.thrown}`;
+  }
+  if (entry.hasOwnProperty('error')) {
+    const isCaught = entry.caught
+      ? 'CAUGHT : ' : 'UNCAUGHT : ';
+    const isAsync = entry.status === 5
+      ? '(async) ' : '';
+    // return `${isCaught}${isAsync}${entry.stack}`;
+    return `${isAsync}${isCaught}${entry.stack}`;
+  };
+  if (entry.hasOwnProperty('assertion')) {
+    const assertion = Boolean(entry.assertion)
+      ? `+ PASS : `
+      : `- FAIL : `;
+    // ? `+ PASS ${isAsync}: `
+    // : `- FAIL ${isAsync}: `;
+    const message = entry.messages
+      .map(msg => toString(msg, 4))
+      .join(' ');
+    return assertion + message;
+  };
+  if (entry.hasOwnProperty('path')) {
+    const isCaught = entry.caught
+      ? 'CAUGHT : ' : 'UNCAUGHT : ';
+    const isAsync = entry.status === 5
+      ? '(async) ' : '';
+    return `${isAsync}${isCaught}${entry.thrown}`;
+  }
+  if (entry.status === 0) {
+    return 'LOG : ' + entry.messages
+      .map(msg => toString(msg, 4))
+      .join('  ');
+  }
+  return '';
+}
 
 const generateTableOfContents = (virDir, path, indent) => {
   indent = indent || '';
@@ -18,7 +55,7 @@ const generateTableOfContents = (virDir, path, indent) => {
         const reviewPath = path
           ? '.' + path + '/REVIEW.md'
           : '';
-        return `${indent}- [${fileReport.path}](${reviewPath}#${anchor}) - ${interpret(fileReport.status)}\n`;
+        return `${indent}- [${fileReport.path}](${reviewPath}#${anchor}) ${fileReport.status === 0 ? '' : '- '}${interpret(fileReport.status)}\n`;
       })
       .reduce((list, li) => list + li, '')
     : '';
@@ -50,43 +87,9 @@ const generateFileSectionMd = (fileReport, title) => {
   const status = `> ${interpret(fileReport.status)}`;
   const sourceLink = `> [review source](.${fileReport.path})`;
 
+
   const renderedReport = fileReport.logs
-    .map(entry => {
-      const isAsync = entry.async
-        ? '(async) ' : '';
-      if (entry.promise) {
-        return `REJECTED : ${entry.stack || entry.thrown}`;
-      }
-      if (entry.hasOwnProperty('error')) {
-        const isCaught = entry.caught
-          ? 'CAUGHT : ' : 'UNCAUGHT : ';
-        // return `${isCaught}${isAsync}${entry.stack}`;
-        return `${isCaught}${entry.stack}`;
-      };
-      if (entry.hasOwnProperty('assertion')) {
-        const assertion = Boolean(entry.assertion)
-          ? `+ PASS : `
-          : `- FAIL : `;
-        // ? `+ PASS ${isAsync}: `
-        // : `- FAIL ${isAsync}: `;
-        const message = entry.messages
-          .map(msg => toString(msg, 4))
-          .join(' ');
-        return assertion + message;
-      };
-      if (entry.hasOwnProperty('path')) {
-        const isCaught = entry.caught
-          ? 'CAUGHT : ' : 'UNCAUGHT : ';
-        // return `${isCaught}${isAsync}${entry.thrown}`;
-        return `${isCaught}${entry.thrown}`;
-      }
-      if (entry.status === 0) {
-        return 'LOG : ' + entry.messages
-          .map(msg => toString(msg, 4))
-          .join('  ');
-      }
-      return '';
-    })
+    .map(renderLogEntry)
     .reduce((all, next) => all + next + '\n', '');
 
   const report = renderedReport
@@ -155,7 +158,23 @@ const writeReviews = (virDir, basePath) => {
   };
 };
 
+const renderUnsorted = (unsorted) => {
+  if (unsorted.length === 0) {
+    return '';
+  }
+
+  return '---\n\n' +
+    '## Unsorted Logs\n\n' +
+    unsorted
+      .map(renderLogEntry)
+      .reduce((all, next) => {
+        return all +
+          '```txt\n' + next + '\n```\n'
+      }, '');
+}
+
 module.exports = {
   generateReviews,
-  writeReviews
+  writeReviews,
+  renderUnsorted
 };

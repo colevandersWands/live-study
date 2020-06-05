@@ -2,20 +2,20 @@
 
 ## /exercises/2-primitive-types/examples
 
-> 6/5/2020, 3:50:12 PM 
+> 6/5/2020, 4:25:51 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
-- [/boolean-undefined-null.js](#boolean-undefined-nulljs) - no assertions
-- [/number.js](#numberjs) - no assertions
-- [/string.js](#stringjs) - no assertions
-- [/typeof.js](#typeofjs) - no assertions
+- [/boolean-undefined-null.js](#boolean-undefined-nulljs) 
+- [/number.js](#numberjs) 
+- [/string.js](#stringjs) 
+- [/typeof.js](#typeofjs) 
 
 ---
 
 ## /boolean-undefined-null.js
 
-> no assertions
+> 
 >
 > [review source](./boolean-undefined-null.js)
 
@@ -55,7 +55,7 @@ console.log(typeof objectNull, objectNull);
 
 ## /number.js
 
-> no assertions
+> 
 >
 > [review source](./number.js)
 
@@ -98,7 +98,7 @@ console.log(typeof numF, numF);
 
 ## /string.js
 
-> no assertions
+> 
 >
 > [review source](./string.js)
 
@@ -154,7 +154,7 @@ console.log(typeof allOfThem, allOfThem);
 
 ## /typeof.js
 
-> no assertions
+> 
 >
 > [review source](./typeof.js)
 

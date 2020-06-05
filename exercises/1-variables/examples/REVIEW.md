@@ -2,19 +2,19 @@
 
 ## /exercises/1-variables/examples
 
-> 6/5/2020, 3:50:12 PM 
+> 6/5/2020, 4:25:51 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
-- [/const-vs-let.js](#const-vs-letjs) - syntaxError
-- [/declaration-and-assignment.js](#declaration-and-assignmentjs) - no assertions
-- [/reassignment.js](#reassignmentjs) - no assertions
+- [/const-vs-let.js](#const-vs-letjs) - syntax error
+- [/declaration-and-assignment.js](#declaration-and-assignmentjs) 
+- [/reassignment.js](#reassignmentjs) 
 
 ---
 
 ## /const-vs-let.js
 
-> syntaxError
+> syntax error
 >
 > [review source](./const-vs-let.js)
 
@@ -31,7 +31,7 @@ SyntaxError: Missing initializer in const declaration
     at Module.require (internal/modules/cjs/loader.js:683:19)
     at require (internal/modules/cjs/helpers.js:16:16)
     at evaluate (  ...  /scripts/lib/evaluate.js:12:7)
-    at Object.<anonymous> (  ...  /scripts/review.js:70:1)
+    at Object.<anonymous> (  ...  /scripts/review.js:72:1)
     at Module._compile (internal/modules/cjs/loader.js:777:30)
     at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
 ```
@@ -80,7 +80,7 @@ console.log(letVariable2);
 
 ## /declaration-and-assignment.js
 
-> no assertions
+> 
 >
 > [review source](./declaration-and-assignment.js)
 
@@ -124,7 +124,7 @@ console.log(anotherVariable);
 
 ## /reassignment.js
 
-> no assertions
+> 
 >
 > [review source](./reassignment.js)
 

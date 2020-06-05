@@ -2,7 +2,7 @@
 
 ## /exercises/2-primitive-types/exercises
 
-> 6/5/2020, 3:50:12 PM 
+> 6/5/2020, 4:25:51 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
@@ -30,7 +30,7 @@ UNCAUGHT : ReferenceError: _ is not defined
     at Module.require (internal/modules/cjs/loader.js:683:19)
     at require (internal/modules/cjs/helpers.js:16:16)
     at evaluate (  ...  /scripts/lib/evaluate.js:12:7)
-    at Object.<anonymous> (  ...  /scripts/review.js:70:1)
+    at Object.<anonymous> (  ...  /scripts/review.js:72:1)
     at Module._compile (internal/modules/cjs/loader.js:777:30)
 ```
 
