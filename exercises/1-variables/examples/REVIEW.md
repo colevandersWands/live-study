@@ -2,7 +2,7 @@
 
 ## /exercises/1-variables/examples
 
-> 6/5/2020, 4:25:51 PM 
+> 6/5/2020, 4:30:47 PM 
 
 [../REVIEW.md](../REVIEW.md)
 

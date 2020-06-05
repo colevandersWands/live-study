@@ -2,9 +2,8 @@
 
 ## /exercises
 
-> 6/5/2020, 4:25:51 PM 
+> 6/5/2020, 4:30:47 PM 
 
-- [/lost.js](#lostjs) - error (async)
 - [/1-variables](./1-variables/REVIEW.md)
   - [/examples](./1-variables/examples/REVIEW.md)
     - [/const-vs-let.js](./1-variables/examples/REVIEW.md#const-vs-letjs) - syntax error
@@ -43,52 +42,3 @@
     - [/3.js](./4-functions/exercises/REVIEW.md#3js) - error
     - [/completed-example.js](./4-functions/exercises/REVIEW.md#completed-examplejs) - pass
 
----
-
-## /lost.js
-
-> error (async)
->
-> [review source](./lost.js)
-
-```txt
-(async) UNCAUGHT : Error: asdf
-    at Timeout._onTimeout (  ...  /exercises/lost.js:2:9)
-    at listOnTimeout (internal/timers.js:531:17)
-    at processTimers (internal/timers.js:475:7)
-```
-
-```js
-setTimeout(() => {
-  throw new Error('asdf')
-}, 0)
-
-setTimeout(() => {
-  throw 'asdf'
-}, 0)
-
-setTimeout(() => {
-  throw 'asdf'
-}, 0)
-
-setTimeout(() => {
-  throw 'asdf'
-}, 0)
-
-```
-
-[TOP](#live-study)
-
----
-
-## Unsorted Logs
-
-```txt
-(async) UNCAUGHT : asdf
-```
-```txt
-(async) UNCAUGHT : asdf
-```
-```txt
-(async) UNCAUGHT : asdf
-```
