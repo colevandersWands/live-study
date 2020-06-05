@@ -1,8 +1,8 @@
 # Live Study 
 
-## /exercises/primitive-types/exercises
+## /exercises/2-primitive-types/exercises
 
-> 6/5/2020, 3:08:10 PM 
+> 6/5/2020, 3:50:12 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
@@ -22,7 +22,7 @@ LOG : object  null
 LOG : object  null
 LOG : -- challenge1 --
 UNCAUGHT : ReferenceError: _ is not defined
-    at Object.<anonymous> (  ...  /exercises/primitive-types/exercises/1.js:12:13)
+    at Object.<anonymous> (  ...  /exercises/2-primitive-types/exercises/1.js:12:13)
     at Module._compile (internal/modules/cjs/loader.js:777:30)
     at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
     at Module.load (internal/modules/cjs/loader.js:643:32)

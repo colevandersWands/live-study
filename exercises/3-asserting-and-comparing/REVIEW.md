@@ -1,8 +1,8 @@
 # Live Study 
 
-## /exercises/asserting-and-comparing
+## /exercises/3-asserting-and-comparing
 
-> 6/5/2020, 3:08:10 PM 
+> 6/5/2020, 3:50:12 PM 
 
 [../REVIEW.md](../REVIEW.md)
 

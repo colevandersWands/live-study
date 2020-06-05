@@ -1,8 +1,8 @@
 # Live Study 
 
-## /exercises/functions/exercises
+## /exercises/4-functions/exercises
 
-> 6/5/2020, 3:08:10 PM 
+> 6/5/2020, 3:50:12 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
@@ -21,7 +21,7 @@
 
 ```txt
 UNCAUGHT : ReferenceError: _ is not defined
-    at Object.<anonymous> (  ...  /exercises/functions/exercises/1.js:10:31)
+    at Object.<anonymous> (  ...  /exercises/4-functions/exercises/1.js:10:31)
     at Module._compile (internal/modules/cjs/loader.js:777:30)
     at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
     at Module.load (internal/modules/cjs/loader.js:643:32)
@@ -96,7 +96,7 @@ console.assert(isTrue6, 'Assertion 6');
 
 ```txt
 UNCAUGHT : ReferenceError: _ is not defined
-    at Object.<anonymous> (  ...  /exercises/functions/exercises/2.js:6:14)
+    at Object.<anonymous> (  ...  /exercises/4-functions/exercises/2.js:6:14)
     at Module._compile (internal/modules/cjs/loader.js:777:30)
     at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
     at Module.load (internal/modules/cjs/loader.js:643:32)
@@ -171,8 +171,8 @@ console.assert(isTrue6, 'Assertion 6');
 
 ```txt
 UNCAUGHT : ReferenceError: _ is not defined
-    at scramble (  ...  /exercises/functions/exercises/3.js:2:18)
-    at Object.<anonymous> (  ...  /exercises/functions/exercises/3.js:9:19)
+    at scramble (  ...  /exercises/4-functions/exercises/3.js:2:18)
+    at Object.<anonymous> (  ...  /exercises/4-functions/exercises/3.js:9:19)
     at Module._compile (internal/modules/cjs/loader.js:777:30)
     at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
     at Module.load (internal/modules/cjs/loader.js:643:32)

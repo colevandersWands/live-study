@@ -1,8 +1,8 @@
 # Live Study 
 
-## /exercises/primitive-types/examples
+## /exercises/2-primitive-types/examples
 
-> 6/5/2020, 3:08:10 PM 
+> 6/5/2020, 3:50:12 PM 
 
 [../REVIEW.md](../REVIEW.md)
 

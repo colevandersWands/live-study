@@ -1,8 +1,8 @@
 # Live Study 
 
-## /exercises/asserting-and-comparing/examples
+## /exercises/3-asserting-and-comparing/examples
 
-> 6/5/2020, 3:08:10 PM 
+> 6/5/2020, 3:50:12 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
@@ -250,7 +250,7 @@ LOG : -- examples --
 + PASS : Assertion 3
 LOG : -- practice exercises --
 UNCAUGHT : ReferenceError: _ is not defined
-    at Object.<anonymous> (  ...  /exercises/asserting-and-comparing/examples/testing-with-assert.js:26:33)
+    at Object.<anonymous> (  ...  /exercises/3-asserting-and-comparing/examples/testing-with-assert.js:26:33)
     at Module._compile (internal/modules/cjs/loader.js:777:30)
     at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
     at Module.load (internal/modules/cjs/loader.js:643:32)

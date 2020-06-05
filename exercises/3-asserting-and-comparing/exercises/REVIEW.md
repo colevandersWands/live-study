@@ -1,8 +1,8 @@
 # Live Study 
 
-## /exercises/asserting-and-comparing/exercises
+## /exercises/3-asserting-and-comparing/exercises
 
-> 6/5/2020, 3:08:10 PM 
+> 6/5/2020, 3:50:12 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
@@ -19,7 +19,7 @@
 
 ```txt
 UNCAUGHT : ReferenceError: _ is not defined
-    at Object.<anonymous> (  ...  /exercises/asserting-and-comparing/exercises/1.js:3:26)
+    at Object.<anonymous> (  ...  /exercises/3-asserting-and-comparing/exercises/1.js:3:26)
     at Module._compile (internal/modules/cjs/loader.js:777:30)
     at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
     at Module.load (internal/modules/cjs/loader.js:643:32)
@@ -64,7 +64,7 @@ console.assert(isTrue4, 'Assertion 4');
 
 ```txt
 UNCAUGHT : ReferenceError: _ is not defined
-    at Object.<anonymous> (  ...  /exercises/asserting-and-comparing/exercises/2.js:4:33)
+    at Object.<anonymous> (  ...  /exercises/3-asserting-and-comparing/exercises/2.js:4:33)
     at Module._compile (internal/modules/cjs/loader.js:777:30)
     at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
     at Module.load (internal/modules/cjs/loader.js:643:32)
